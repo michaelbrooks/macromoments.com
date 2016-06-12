@@ -27,9 +27,11 @@ module.exports = {
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
+        preloaders: [
+          'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
+        ],
         loaders: [
-          'file?hash=sha512&digest=hex&name=[hash].[ext]',
-          'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false',
+          'file?hash=sha512&digest=hex&name=[hash].[ext]'
         ],
         include: src
       },

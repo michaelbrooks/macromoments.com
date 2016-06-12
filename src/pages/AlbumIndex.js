@@ -4,6 +4,7 @@ import Radium from 'radium';
 
 import FadeImage from '../components/fade_image';
 import albums from '../components/albums';
+import constants from '../components/constants';
 
 @Radium
 class AlbumIndex extends React.Component {
@@ -12,25 +13,37 @@ class AlbumIndex extends React.Component {
 
     const imgStyle = {
       width: '100%',
-      height: '70%',
-      margin: '0 0 10px 0',
+      position: 'relative',
+      marginTop: 0,
+      marginRight: 0,
+      paddingBottom: constants.pageMargin,
+      marginLeft: 0,
       display: 'inline-block',
 
       '@media (min-width: 768px)': {
-        width: 314,
-        height: 200,
-        marginRight: 10,
+        width: '33.33%',
+        paddingRight: constants.pageMargin,
+        boxSizing: 'border-box',
       },
 
       '@media (min-width: 992px)': {
-        width: '100%',
-        height: 500,
-      },
-
-      '@media (min-width: 1200px)': {
-        width: '100%',
+        width: '25%',
       },
     }
+
+    const middleStyle = {
+      width: '100%',
+      paddingBottom: '100%',
+      position: 'relative',
+    }
+
+    const childStyle = {
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      width: '100%',
+      height: '100%',
+    };
 
     const album = this.props.params.album;
 
@@ -38,18 +51,46 @@ class AlbumIndex extends React.Component {
       .map((url, idx) => {
         return (
           <div style={imgStyle} key={album + idx}>
-            <Link to={`/${album}/${idx + 1}`}>
-              <FadeImage src={url}/>
-            </Link>
+            <div style={middleStyle}>
+            <div style={childStyle}>
+              <Link to={`/${album}/${idx + 1}`}>
+                <FadeImage src={url}/>
+              </Link>
+            </div>
+            </div>
           </div>
         )
         //return <img src={url} key={key} style={imgStyle} />
       });
 
+    const albumStyle = {
+      paddingLeft: constants.pageMargin,
+      paddingTop: constants.pageMargin,
+      paddingBottom: constants.pageMargin,
+      paddingRight: constants.pageMargin,
+      boxSizing: 'border-box',
+
+      '@media (min-width: 768px)': {
+        paddingRight: 0,
+      },
+
+      // '@media (min-width: 992px)': {
+      //   paddingLeft: 0,
+      //   paddingRight: 0,
+      //   width: 992 - constants.pageMargin,
+      //   marginLeft: 'auto',
+      //   marginRight: 'auto',
+      //   position: 'relative',
+      //   left: constants.pageMargin / 2,
+      // },
+      //
+      // '@media (min-width: 1200px)': {
+      //
+      // },
+    }
+
     return (
-      <div style={{
-        margin: 10,
-      }}>
+      <div style={albumStyle}>
         { images }
       </div>
     );

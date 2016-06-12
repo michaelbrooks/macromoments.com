@@ -26,7 +26,7 @@ export default class Image extends React.Component {
 
     return (
       <div style={imgStyle}>
-        <FadeImage src={url} />
+        <FadeImage src={url} size='contain' />
       </div>
     );
   }
