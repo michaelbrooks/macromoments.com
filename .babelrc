@@ -1,5 +1,5 @@
 {
-  "presets": ["es2015", "stage-0", "react"],
+  "presets": ["es2015", "react", "stage-1"],
   "env": {
     "development": {
       "plugins": [
@@ -16,14 +16,12 @@
           ]}
         ]
       ],
-      "presets": ["es2015", "react", "stage-1"],
     },
     "production": {
       "plugins": [
         "transform-runtime",
         "transform-decorators-legacy",
-      ],
-      "presets": ["es2015", "react", "stage-1"],
+      ]
     }
   }
 }

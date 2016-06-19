@@ -5,6 +5,10 @@ import FadeImage from '../components/fade_image';
 
 export default class Image extends React.Component {
 
+  static propTypes = {
+    params: React.PropTypes.object.isRequired,
+  }
+
   render() {
     const {
       album,
@@ -26,7 +30,7 @@ export default class Image extends React.Component {
 
     return (
       <div style={imgStyle}>
-        <FadeImage src={url} size='contain' />
+        <FadeImage src={url} size="contain" />
       </div>
     );
   }
