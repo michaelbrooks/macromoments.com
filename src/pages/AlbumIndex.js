@@ -1,13 +1,19 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { Link } from 'react-router'
 import Radium from 'radium';
 
 import FadeImage from '../components/fade_image';
+import RouteHelper from '../components/route_helper';
 import albums from '../components/albums';
 import constants from '../components/constants';
 
+@RouteHelper
 @Radium
 class AlbumIndex extends React.Component {
+
+  static propTypes = {
+    linkToImage: PropTypes.func.isRequired,
+  };
 
   render() {
 
@@ -45,7 +51,10 @@ class AlbumIndex extends React.Component {
       height: '100%',
     };
 
-    const album = this.props.params.album;
+    const {
+      album,
+      linkToImage,
+    } = this.props;
 
     let images = albums.getImages(album)
       .map((url, idx) => {
@@ -53,7 +62,7 @@ class AlbumIndex extends React.Component {
           <div style={imgStyle} key={album + idx}>
             <div style={middleStyle}>
             <div style={childStyle}>
-              <Link to={`/${album}/${idx + 1}`}>
+              <Link to={linkToImage(album, idx)}>
                 <FadeImage src={url}/>
               </Link>
             </div>

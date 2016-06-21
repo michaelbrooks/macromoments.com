@@ -1,19 +1,28 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { browserHistory } from 'react-router';
 
 import albums from '../components/albums';
 import FadeImage from '../components/fade_image';
+import RouteHelper from '../components/route_helper';
 
+@RouteHelper
 export default class Image extends React.Component {
 
   static propTypes = {
-    params: React.PropTypes.object.isRequired,
+    album: PropTypes.string.isRequired,
+    imageIndex: PropTypes.number.isRequired,
+    goToAlbum: PropTypes.func.isRequired,
+    nextImage: PropTypes.func.isRequired,
+    prevImage: PropTypes.func.isRequired,
   }
 
   _handleKeyDown = (e) => {
     if (e.key === 'Escape') {
-      const album = this.props.params.album;
-      browserHistory.push(`/${album}`);
+      this.props.goToAlbum();
+    } else if (e.key === 'ArrowLeft') {
+      this.props.prevImage();
+    } else if (e.key === 'ArrowRight') {
+      this.props.nextImage();
     }
   }
 

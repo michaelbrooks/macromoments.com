@@ -17,6 +17,9 @@ imageRequireContext.keys().forEach(key => {
 });
 
 module.exports = {
+  size: (album) => {
+    return albumImages[album].length;
+  },
   getImages: (album) => {
     return albumImages[album].map(imageRequireContext);
   },
