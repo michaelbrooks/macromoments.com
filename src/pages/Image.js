@@ -1,4 +1,5 @@
 import React from 'react';
+import { browserHistory } from 'react-router';
 
 import albums from '../components/albums';
 import FadeImage from '../components/fade_image';
@@ -7,6 +8,21 @@ export default class Image extends React.Component {
 
   static propTypes = {
     params: React.PropTypes.object.isRequired,
+  }
+
+  _handleKeyDown = (e) => {
+    if (e.key === 'Escape') {
+      const album = this.props.params.album;
+      browserHistory.push(`/${album}`);
+    }
+  }
+
+  componentDidMount() {
+    document.addEventListener('keydown', this._handleKeyDown);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this._handleKeyDown);
   }
 
   render() {
