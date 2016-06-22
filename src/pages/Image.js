@@ -1,6 +1,5 @@
 import React, { PropTypes } from 'react';
 import ReactDOM from 'react-dom';
-import { browserHistory } from 'react-router';
 
 import albums from '../components/albums';
 import FadeImage from '../components/fade_image';
@@ -15,16 +14,6 @@ export default class Image extends React.Component {
     goToAlbum: PropTypes.func.isRequired,
     nextImage: PropTypes.func.isRequired,
     prevImage: PropTypes.func.isRequired,
-  }
-
-  _handleKeyDown = (e) => {
-    if (e.key === 'Escape') {
-      this.props.goToAlbum();
-    } else if (e.key === 'ArrowLeft') {
-      this.props.prevImage();
-    } else if (e.key === 'ArrowRight') {
-      this.props.nextImage();
-    }
   }
 
   componentDidMount() {
@@ -54,14 +43,21 @@ export default class Image extends React.Component {
     return false;
   }
 
+  _handleKeyDown = (e) => {
+    if (e.key === 'Escape') {
+      this.props.goToAlbum();
+    } else if (e.key === 'ArrowLeft') {
+      this.props.prevImage();
+    } else if (e.key === 'ArrowRight') {
+      this.props.nextImage();
+    }
+  }
+
   render() {
     const {
       album,
-      image,
-    } = this.props.params;
-
-    const idx = Number.parseInt(image, 10) - 1;
-    const url = albums.getImage(album, idx);
+      imageIndex,
+    } = this.props;
 
     const imgStyle = {
       position: 'absolute',
@@ -72,6 +68,8 @@ export default class Image extends React.Component {
       padding: 20,
       boxSizing: 'border-box',
     };
+
+    const url = albums.getImage(album, imageIndex);
 
     return (
       <div style={imgStyle}>

@@ -5,7 +5,7 @@ const albumImages = {};
 imageRequireContext.keys().forEach(key => {
   const match = key.match(/^\.\/(\w+)\//);
   if (!match) {
-    throw `Unparseable album image: ${key}`;
+    throw new Error(`Unparseable album image: ${key}`);
   }
 
   const album = match[1];

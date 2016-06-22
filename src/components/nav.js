@@ -14,7 +14,7 @@ export default class Nav extends React.Component {
       width: '100%',
       height: constants.navHeight,
       lineHeight: `${constants.navHeight}px`,
-      background: '#333',
+      background: 'rgba(0, 0, 0, 0.7)',
       fontSize: 14,
     };
 
@@ -42,13 +42,29 @@ export default class Nav extends React.Component {
       color: 'white',
     };
 
+    const links = [
+      <IndexLink to="/" style={linkStyle} activeStyle={activeStyle}>Home</IndexLink>,
+      <Link to="/nature" style={linkStyle} activeStyle={activeStyle}>Nature</Link>,
+      <Link to="/abstract" style={linkStyle} activeStyle={activeStyle}>Abstract</Link>,
+      <Link to="/about" style={linkStyle} activeStyle={activeStyle}>About</Link>,
+    ];
+
     return (
       <div style={navbarStyle}>
+        <div style={{
+          color: '#999',
+          fontSize: 10,
+          marginRight: constants.pageMargin,
+          float: 'right',
+        }}>
+          To purchase an image, please contact me
+        </div>
         <ul role="nav" style={ulStyle}>
-          <li style={liStyle}><IndexLink to="/" style={linkStyle} activeStyle={activeStyle}>Home</IndexLink></li>
-          <li style={liStyle}><Link to="/nature" style={linkStyle} activeStyle={activeStyle}>Nature</Link></li>
-          <li style={liStyle}><Link to="/abstract" style={linkStyle} activeStyle={activeStyle}>Abstract</Link></li>
-          <li style={liStyle}><Link to="/about" style={linkStyle} activeStyle={activeStyle}>About</Link></li>
+          {
+            links.map((link, idx) => (
+              <li key={idx} style={liStyle}>{link}</li>
+            ))
+          }
         </ul>
       </div>
     );

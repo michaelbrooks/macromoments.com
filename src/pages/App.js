@@ -16,15 +16,6 @@ export default class App extends Component {
           boxSizing: 'border-box',
         }}>
           { this.props.children }
-          <div style={{
-            color: '#999',
-            position: 'fixed',
-            right: 5,
-            bottom: 5 + constants.navHeight,
-            fontSize: 10,
-          }}>
-            To purchase an image, please contact me
-          </div>
           <Nav/>
         </div>
       </StyleRoot>

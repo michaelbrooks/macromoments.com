@@ -12,11 +12,11 @@ import constants from '../components/constants';
 class AlbumIndex extends React.Component {
 
   static propTypes = {
+    album: PropTypes.string.isRequired,
     linkToImage: PropTypes.func.isRequired,
   };
 
   render() {
-
     const imgStyle = {
       width: '100%',
       position: 'relative',
@@ -56,25 +56,38 @@ class AlbumIndex extends React.Component {
       linkToImage,
     } = this.props;
 
-    let images = albums.getImages(album)
-      .map((url, idx) => {
-        return (
-          <div style={imgStyle} key={album + idx}>
-            <div style={middleStyle}>
-            <div style={childStyle}>
-              <Link to={linkToImage(album, idx)}>
-                <FadeImage src={url}/>
-              </Link>
-            </div>
-            </div>
+    const titleHeight = 70;
+    const titleStyle = {
+      color: 'white',
+      fontWeight: 200,
+      fontSize: 36,
+      background: 'rgba(0, 0, 0, 0.7)',
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      width: '100%',
+      textAlign: 'center',
+      margin: 0,
+      height: titleHeight,
+      lineHeight: `${titleHeight}px`,
+    };
+
+    const images = albums.getImages(album)
+      .map((url, idx) => (
+        <div style={imgStyle} key={album + idx}>
+          <div style={middleStyle}>
+          <div style={childStyle}>
+            <Link to={linkToImage(album, idx)}>
+              <FadeImage src={url}/>
+            </Link>
           </div>
-        )
-        //return <img src={url} key={key} style={imgStyle} />
-      });
+          </div>
+        </div>
+      ));
 
     const albumStyle = {
       paddingLeft: constants.pageMargin,
-      paddingTop: constants.pageMargin,
+      paddingTop: titleHeight,
       paddingBottom: constants.pageMargin,
       paddingRight: constants.pageMargin,
       boxSizing: 'border-box',
@@ -96,11 +109,14 @@ class AlbumIndex extends React.Component {
       // '@media (min-width: 1200px)': {
       //
       // },
-    }
+    };
 
     return (
-      <div style={albumStyle}>
-        { images }
+      <div>
+        <div style={albumStyle}>
+          { images }
+        </div>
+        <h1 style={titleStyle}>{album}</h1>
       </div>
     );
   }
