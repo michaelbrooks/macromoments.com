@@ -12,13 +12,9 @@ export default (Component) => class extends React.Component {
     }).isRequired,
   }
 
-  linkToImage = (album, idx) => {
-    return `/${album}/${idx + 1}`;
-  }
+  linkToImage = (album, idx) => `/${album}/${idx + 1}`;
 
-  linkToAlbum = (album) => {
-    return `/${album}`;
-  }
+  linkToAlbum = (album) => `/${album}`;
 
   goToAlbum = (album) => {
     const target = album || this.props.params.album;
@@ -59,7 +55,7 @@ export default (Component) => class extends React.Component {
       image,
     } = this.props.params;
 
-    const parsedImage = Number.parseInt(10) - 1;
+    const parsedImage = Number.parseInt(image, 10) - 1;
 
     const routeMethods = {
       linkToImage: this.linkToImage,
@@ -72,9 +68,11 @@ export default (Component) => class extends React.Component {
 
     return (
       <Component
-        album={album} imageIndex={parsedImage}
+        album={album}
+        imageIndex={parsedImage}
         {...routeMethods}
-        {...this.props} />
+        {...this.props}
+      />
     );
   }
-}
+};

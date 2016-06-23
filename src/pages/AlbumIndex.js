@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import { Link } from 'react-router'
+import { Link } from 'react-router';
 import Radium from 'radium';
 
 import FadeImage from '../components/fade_image';
@@ -35,13 +35,13 @@ class AlbumIndex extends React.Component {
       '@media (min-width: 992px)': {
         width: '25%',
       },
-    }
+    };
 
     const middleStyle = {
       width: '100%',
       paddingBottom: '100%',
       position: 'relative',
-    }
+    };
 
     const childStyle = {
       position: 'absolute',

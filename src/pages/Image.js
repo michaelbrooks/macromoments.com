@@ -10,8 +10,8 @@ export default class Image extends React.Component {
 
   static propTypes = {
     album: PropTypes.string.isRequired,
-    imageIndex: PropTypes.number.isRequired,
     goToAlbum: PropTypes.func.isRequired,
+    imageIndex: PropTypes.number.isRequired,
     nextImage: PropTypes.func.isRequired,
     prevImage: PropTypes.func.isRequired,
   }
