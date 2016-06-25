@@ -32,13 +32,15 @@ module.exports = {
         ],
         loaders: [
           'file?hash=sha512&digest=hex&name=[hash].[ext]'
-        ],
-        include: src
+        ]
       },
       {
         test: /\.css$/,
-        loader: "style-loader!css-loader",
-        include: src
+        loader: "style-loader!css-loader"
+      },
+      {
+        test: /\.(eot|svg|ttf|woff|woff2)$/,
+        loader: 'file?name=public/fonts/[name].[ext]'
       }
     ]
   }

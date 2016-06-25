@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { StyleRoot } from 'radium';
 
 import constants from '../components/constants';
@@ -9,10 +9,8 @@ export default class App extends Component {
     return (
       <StyleRoot>
         <div style={{
-          background: "#000",
           width: '100%',
           minHeight: '100%',
-          paddingBottom: constants.navHeight,
           boxSizing: 'border-box',
         }}>
           { this.props.children }
