@@ -26,36 +26,44 @@ export default (Component) => class extends React.Component {
   }
 
   _changeImage(delta) {
-    const {
-      album,
-      image,
-    } = this.props.params;
-
-    const numImages = albums.size(album);
-    const nextImageIdx = Number.parseInt(image, 10) - 1 + delta;
-
-    if (nextImageIdx < 0 || nextImageIdx >= numImages) {
+    const nextImageIdx = this._albumHasImage(delta);
+    if (nextImageIdx === null) {
       this.goToAlbum();
     } else {
-      this.goToImage(album, nextImageIdx);
+      this.goToImage(this.props.params.album, nextImageIdx);
     }
   }
 
-  prevImage = () => {
-    this._changeImage(-1);
+  _albumHasImage(delta) {
+    const {
+      album,
+    } = this.props.params;
+
+    const numImages = albums.size(album);
+    const nextImageIdx = this._getImageIndex() + delta;
+
+    if (nextImageIdx < 0 || nextImageIdx >= numImages) {
+      return null;
+    }
+
+    return nextImageIdx;
   }
 
-  nextImage = () => {
-    this._changeImage(+1);
+  _getImageIndex() {
+    return Number.parseInt(this.props.params.image, 10) - 1;
   }
+
+  hasPrevImage = () => this._albumHasImage(-1) !== null;
+  hasNextImage = () => this._albumHasImage(+1) !== null;
+  prevImage = () => this._changeImage(-1);
+  nextImage = () => this._changeImage(+1);
 
   render() {
     const {
       album,
-      image,
     } = this.props.params;
 
-    const parsedImage = Number.parseInt(image, 10) - 1;
+    const parsedImage = this._getImageIndex();
 
     const routeMethods = {
       linkToImage: this.linkToImage,
@@ -64,6 +72,8 @@ export default (Component) => class extends React.Component {
       goToImage: this.goToImage,
       nextImage: this.nextImage,
       prevImage: this.prevImage,
+      hasNextImage: this.hasNextImage,
+      hasPrevImage: this.hasPrevImage,
     };
 
     return (

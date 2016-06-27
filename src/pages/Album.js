@@ -72,15 +72,15 @@ export default class Album extends React.Component {
       lineHeight: `${titleHeight}px`,
     };
 
-    const images = albums.getImages(album)
+    const images = albums.loadImages(album)
       .map((url, idx) => (
         <div style={imgStyle} key={album + idx}>
           <div style={middleStyle}>
-          <div style={childStyle}>
-            <Link to={linkToImage(album, idx)}>
-              <FadeImage src={url}/>
-            </Link>
-          </div>
+            <div style={childStyle}>
+              <Link to={linkToImage(album, idx)}>
+                <FadeImage src={url}/>
+              </Link>
+            </div>
           </div>
         </div>
       ));
