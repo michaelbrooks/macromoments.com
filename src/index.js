@@ -6,9 +6,8 @@ require('./style.css');
 
 import App from './pages/App';
 import Home from './pages/Home';
-import Album from './pages/Album';
-import AlbumIndex from './pages/AlbumIndex';
 import Image from './pages/Image';
+import Album from './pages/Album';
 import About from './pages/About';
 
 render(
@@ -16,10 +15,8 @@ render(
     <Route path="/" component={App}>
       <IndexRoute component={Home}/>
       <Route path="/about" component={About}/>
-      <Route path="/:album" component={Album}>
-        <IndexRoute component={AlbumIndex}/>
-        <Route path="/:album/:image" component={Image}/>
-      </Route>
+      <Route path="/:album" component={Album}/>
+      <Route path="/:album/:image" component={Image}/>
     </Route>
   </Router>,
   document.getElementById('root')

@@ -4,7 +4,7 @@ const imageRequireContext = require.context(`../images/`, true, /\.jpg$/);
 const extractAlbum = (path) => {
   const match = path.match(/^\.\/(\w+)\//);
   if (!match) {
-    throw new Error(`Unparseable album image: ${key}`);
+    throw new Error(`Unparseable album image: ${path}`);
   }
 
   return match[1];
@@ -21,19 +21,9 @@ imageRequireContext.keys().forEach(key => {
 });
 
 module.exports = {
-  getAlbums: () => {
-    return Object.keys(albumImages);
-  },
-  size: (album) => {
-    return albumImages[album].length;
-  },
-  getImages: (album) => {
-    return albumImages[album].map(imageRequireContext);
-  },
-  getImage: (album, image) => {
-    return imageRequireContext(albumImages[album][image]);
-  },
-  getImageByName: (album, filename) => {
-    return imageRequireContext(`./${album}/${filename}`);
-  }
-}
+  getAlbums: () => Object.keys(albumImages),
+  size: (album) => albumImages[album].length,
+  getImages: (album) => albumImages[album].map(imageRequireContext),
+  getImage: (album, image) => imageRequireContext(albumImages[album][image]),
+  getImageByName: (album, filename) => imageRequireContext(`./${album}/${filename}`),
+};
