@@ -46,7 +46,7 @@ module.exports = {
   },
   imageWebpackLoader: {
     bypassOnDebug: true,
-    progressive: false,
+    progressive: true,
     optimizationLevel: 7,
     interlaced: false,
   }

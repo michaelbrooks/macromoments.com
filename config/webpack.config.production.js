@@ -1,5 +1,6 @@
 /* eslint-disable no-var */
 var webpack = require('webpack');
+var path = require('path');
 var S3Plugin = require('webpack-s3-plugin')
 
 var config = require('./webpack.config.base');
@@ -35,7 +36,7 @@ if (process.env.WEBPACK_DEPLOY) {
       DistributionId: process.env.CLOUDFRONT_DISTRIBUTION_ID,
       Items: ['/*']
     },
-    basePath: 'dist'
+    basePath: 'dist',
   }));
 }
 

@@ -44,8 +44,10 @@ export default class Nav extends React.Component {
 
     const links = [
       <IndexLink to="/" style={linkStyle} activeStyle={activeStyle}>Home</IndexLink>,
+      <Link to="/tea" style={linkStyle} activeStyle={activeStyle}>Tea</Link>,
       <Link to="/nature" style={linkStyle} activeStyle={activeStyle}>Nature</Link>,
-      <Link to="/abstract" style={linkStyle} activeStyle={activeStyle}>Abstract</Link>,
+      <Link to="/other" style={linkStyle} activeStyle={activeStyle}>Other</Link>,
+      <Link to="/animals" style={linkStyle} activeStyle={activeStyle}>Animals</Link>,
       <Link to="/about" style={linkStyle} activeStyle={activeStyle}>About</Link>,
     ];
 

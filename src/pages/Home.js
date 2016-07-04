@@ -8,8 +8,10 @@ import RouteHelper from '../components/route_helper';
 import albums from '../components/albums';
 
 const slides = [
-  albums.getMetaByName('abstract', 'DSC04178e.jpg'),
-  albums.getMetaByName('abstract', 'DSC04211e.jpg'),
+  albums.getMetaByName('animals', 'TM 2015 Victoria BC425.jpg'),
+  albums.getMetaByName('nature', 'ON 2007 (72).jpg'),
+  albums.getMetaByName('other', 'DTO 2007 (26).JPG'),
+  albums.getMetaByName('tea', 'Arbor Dar 2nd Makaibari Org Dry.JPG'),
 ];
 
 @RouteHelper
@@ -26,12 +28,12 @@ export default class Home extends React.Component {
   render() {
     const settings = {
       autoplay: true,
-      autoplaySpeed: 5000, // delay in ms
+      autoplaySpeed: 8000, // delay in ms
       centerMode: true,
       dots: true,
       infinite: true,
       fade: true,
-      speed: 500,
+      speed: 1000,
       slidesToShow: 1,
       slidesToScroll: 1,
       draggable: false,

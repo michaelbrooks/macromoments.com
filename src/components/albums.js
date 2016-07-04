@@ -1,5 +1,5 @@
 
-const imageRequireContext = require.context(`../images/`, true, /\.jpg$/);
+const imageRequireContext = require.context(`../images/`, true, /\.jpg$/i);
 
 const extractAlbum = (path) => {
   const match = path.match(/^\.\/(\w+)\/(.*)/);
