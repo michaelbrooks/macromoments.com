@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "node config/server.js",
-    "build": "BABEL_ENV=production webpack --config config/webpack.config.production.js",
+    "start": "BABEL_ENV=development webpack-dev-server --inline --hot --history-api-fallback --config config/webpack.config.dev.js",
+    "build": "BABEL_ENV=production webpack --progress --config config/webpack.config.production.js",
+    "deploy": "source credentials.sh && WEBPACK_DEPLOY=1 npm run build",
     "lint": "./node_modules/.bin/eslint ."
   },
   "repository": {

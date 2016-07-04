@@ -28,7 +28,7 @@ module.exports = {
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
         preloaders: [
-          'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
+          'image-webpack'
         ],
         loaders: [
           'file?hash=sha512&digest=hex&name=[hash].[ext]'
@@ -36,12 +36,18 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: "style-loader!css-loader"
+        loader: 'style-loader!css-loader'
       },
       {
         test: /\.(eot|svg|ttf|woff|woff2)$/,
         loader: 'file?name=public/fonts/[name].[ext]'
       }
     ]
+  },
+  imageWebpackLoader: {
+    bypassOnDebug: true,
+    progressive: false,
+    optimizationLevel: 7,
+    interlacted: false,
   }
 };
