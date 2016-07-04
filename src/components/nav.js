@@ -48,7 +48,7 @@ export default class Nav extends React.Component {
       <Link to="/nature" style={linkStyle} activeStyle={activeStyle}>Nature</Link>,
       <Link to="/other" style={linkStyle} activeStyle={activeStyle}>Other</Link>,
       <Link to="/animals" style={linkStyle} activeStyle={activeStyle}>Animals</Link>,
-      <Link to="/about" style={linkStyle} activeStyle={activeStyle}>About</Link>,
+      /* <Link to="/about" style={linkStyle} activeStyle={activeStyle}>About</Link>, */
     ];
 
     return (

@@ -61,6 +61,7 @@ export default class Album extends React.Component {
       color: 'white',
       fontWeight: 200,
       fontSize: 36,
+      textTransform: 'capitalize',
       background: 'rgba(0, 0, 0, 0.7)',
       position: 'fixed',
       top: 0,
