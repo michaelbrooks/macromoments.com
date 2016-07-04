@@ -48,6 +48,6 @@ module.exports = {
     bypassOnDebug: true,
     progressive: false,
     optimizationLevel: 7,
-    interlacted: false,
+    interlaced: false,
   }
 };
