@@ -59,7 +59,7 @@ export default class Nav extends React.Component {
           marginRight: constants.pageMargin,
           float: 'right',
         }}>
-          To purchase an image, please contact me
+          To purchase an image, please <a style={{ color: '#aaa' }} href="mailto:info@macromoments.com">contact me</a>.
         </div>
         <ul role="nav" style={ulStyle}>
           {

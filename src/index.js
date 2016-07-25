@@ -15,8 +15,10 @@ render(
     <Route path="/" component={App}>
       <IndexRoute component={Home}/>
       <Route path="/about" component={About}/>
-      <Route path="/:album" component={Album}/>
-      <Route path="/:album/:image" component={Image}/>
+      <Route path="/:album">
+        <IndexRoute component={Album} />
+        <Route path="/:album/:image" component={Image} />
+      </Route>
     </Route>
   </Router>,
   document.getElementById('root')
